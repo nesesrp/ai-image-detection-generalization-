@@ -336,3 +336,7 @@ Fixed-4k, Mean (6 unseen) Accuracy: CLIP 87,8 → 90,2; CNN 84,2 → 84,7; ViT 8
 - CLIP-H'nin kazancı ADM (82 → 93) ve VQDM'de (86 → 93) büyük; BigGAN'da ise düşüş var (84,8 → 73,5): büyütülmüş 128 px görseller CLIP-H'yi şaşırtıyor olabilir.
 - ResNet-101 küçük ama tutarlı kazanç (4k +0,6, 8k +1,3). ViT-L ViT-B'den az farkla iyi (+0,5 / +2,1) ve 8k'daki düşüşü azaltıyor, ama ViT ailesi hâlâ en zayıf; Fake acc. düşük (≈63–72), gerçeğe yatkın.
 - Maliyet: ViT-L 8,35 GB GPU ve ViT-B'nin ~3,3 katı süre; CLIP-H tek seferlik öznitelik çıkarma 267 sn. Hepsi T4'e (15 GB) sığıyor.
+
+### Confusion matrix (2×2, 5 unseen, 3 seed ortalaması)
+Kod: `scripts/confusion_matrix_2x2.py` — Real acc. ve Fake acc. değerlerinden hesaplanır (500 gerçek, 2.500 yapay; sayılar yuvarlanmış). Görsel: `results/confusion_matrix_2x2.png`.
+Hataların çoğu false negative (yapay → gerçek): ViT-B/16 8k'da ~920/2.500 yapay görseli gerçek sanıyor, gerçeklerde yalnız ~28/500 hata. CLIP ViT-H/14 en az false positive (~22–24/500).

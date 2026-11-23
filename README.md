@@ -69,6 +69,7 @@ python scripts/veri_duzelt.py "<kaynak klasör>" "<hedef klasör>"
 |---|---|
 | `kaggle/` | Kaggle not defteri hücreleri (`hucreN_*.py`) |
 | `scripts/veri_duzelt.py` | Veri setlerini 224×224 JPEG (kalite 96) formatına getirir |
+| `scripts/confusion_matrix_2x2.py` | 2×2 deneyinin confusion matrix grafiğini çizer (`results/confusion_matrix_2x2.png`) |
 | `results/SONUCLAR.md` | Tüm deney sonuçları (Accuracy, ROC-AUC, AP, kaynak kullanımı) |
 
 ## Hücre sırası
@@ -88,3 +89,8 @@ Hücreler aynı kernel oturumunda sırayla çalışmalıdır; oturum yeniden ba�
 | 8k (SD 1.5 + Wukong) | 88,4 → 90,3 | 83,9 → 85,2 | 78,8 → 80,9 |
 
 Wukong 8k eğitiminde görüldüğü için karşılaştırma 5 görülmeyen üreticide (ADM, BigGAN, GLIDE, Midjourney, VQDM) yapılmıştır. CLIP ViT-H/14 ağırlıkları LAION-2B üzerinde eğitilmiştir.
+
+### Confusion matrix
+Her modelin Real acc. ve Fake acc. değerlerinden hesaplanmıştır (500 gerçek + 2.500 yapay test görseli; sayılar 3 seed ortalamasından yuvarlanmıştır). Hataların çoğu yapay görsellerin gerçek olarak sınıflandırılmasından kaynaklanmaktadır.
+
+![Confusion matrix](results/confusion_matrix_2x2.png)
