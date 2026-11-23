@@ -56,7 +56,7 @@ Düzeltmeden sonra kestirme testi %53–57'ye düştü. Eğitimde yeniden boyutl
 | Tiny GenImage (224 JPEG96) | 35.000 | 929 MB | 3.631 (BigGAN 2.500 + küçük 1.131 gerçek) |
 | Unbiased Tiny GenImage (224 JPEG96) | 23.328 | 594 MB | 2.500 (BigGAN) |
 
-Tüm çıktılar JPEG ve 224×224. Kaggle'da aynı işlem `kaggle/hucre14_hoca_duzeltilmis_kucuk.py` içinde, yerelde `scripts/veri_duzelt.py` ile yapılır:
+Tüm çıktılar JPEG ve 224×224. Kaggle'da aynı işlem `kaggle/hucre14_2x2_temel_modeller.py` içinde, yerelde `scripts/veri_duzelt.py` ile yapılır:
 
 ```bash
 python scripts/veri_duzelt.py "<kaynak klasör>" "<hedef klasör>"

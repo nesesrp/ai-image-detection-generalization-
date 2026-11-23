@@ -90,7 +90,7 @@ SD 1.5 fake'leri 512×512, real'ler ~500 px (yerel kopyadan doğrulandı: ADM/GL
 Midjourney 1024×1024, Wukong 512×512). Sınıflandırıcı "512 ve üzeri ise fake" kuralını öğrenmiş; 512+ üreticilerde %100,
 256 ve altında %50 (hepsine real diyor). İnce ayarlı modeller görüntüyü 256'ya küçültüp 224 kırptığı için boyut doğrudan
 girdi değil, ama yeniden örnekleme izleri üzerinden etkisi olabilir; tam deneylerde native çözünürlükte rastgele kırpma
-gibi önlemler danışmanla değerlendirilecek.
+gibi önlemler ayrıca değerlendirilecek.
 
 ## D4 mini — biçim yanlılığının etkisi (seed 42), Mean (6 unseen), %
 | Train → Test | CLIP Acc / Fake | ResNet-50 Acc / Fake | ViT-B/16 Acc / Fake |
@@ -220,9 +220,9 @@ Yeni CLIP öznitelikleri (4.000 görsel): 84 sn. B-8k seed 42 modelleri `/kaggle
 - Wukong, A'da hiç görülmeden %95,8 alıyordu; SD 1.5'e çok benzediği için eklediği çeşitlilik sınırlı. Daha farklı bir ikinci üretici (ör. GAN tabanlı) daha bilgilendirici olabilir.
 - GPU belleği 8k'da da aynı (batch size belirliyor); süre iki katı.
 
-## Danışmanın 2×2 deneyi — adım 1: düzeltilmiş veri, aynı modeller (21.11.2026)
-Danışmanın istediği dört koşul: (1) düzeltilmiş veri + aynı model, (2) düzeltilmiş veri + büyük model, (3) iki katı veri + aynı model, (4) iki katı veri + büyük model.
-Kod: `hucre14_hoca_duzeltilmis_kucuk.py` (Hücre 12–13'ten sonra). Toplam 30,9 dk.
+## 2×2 deneyi — adım 1: düzeltilmiş veri, aynı modeller (21.11.2026)
+Dört koşul: (1) düzeltilmiş veri + aynı model, (2) düzeltilmiş veri + büyük model, (3) iki katı veri + aynı model, (4) iki katı veri + büyük model.
+Kod: `hucre14_2x2_temel_modeller.py` (Hücre 12–13'ten sonra). Toplam 30,9 dk.
 - **Düzeltme** (rapor Bölüm 3 ön işleme kararı): tüm görseller özgün çözünürlükte 224×224 merkezden kırpıldı ve JPEG kalite 96 ile yeniden kaydedildi; kısa kenarı 224'ten küçük olan BigGAN (128 px) önce bicubic ile 224'e büyütüldü. Eğitimde ve testte yeniden boyutlandırma yok (eğitimde yalnız yatay çevirme).
 - Fixed-4k = 2.000 SD1.5 + 2.000 gerçek; Fixed-8k = 2.000 SD1.5 + 2.000 Wukong + 4.000 gerçek (B-8k ile aynı görseller). Karşılaştırma 5 görülmeyen üreticide (Wukong 8k'da görülen).
 
@@ -288,7 +288,7 @@ Betik: `deneyler/veri_duzelt.py` (Hücre 14 ile aynı işlem: 224×224 merkezden
 | Tiny GenImage (7,8 GB; ai PNG, nature JPEG) | 35.000 | `Tiny GenImage (224 JPEG96)` | 929 MB | 3.631 (BigGAN 2.500 + kısa kenarı <224 olan 1.131 gerçek görsel) |
 Doğrulama: çıktıdaki tüm görseller JPEG, 224×224. Tiny GenImage'ın gerçek görsellerinde 224'ten küçük ImageNet görselleri var (üretici başına ~160); Unbiased sürümde yok (gerçekler ~500 px seçilmiş).
 
-## Danışmanın 2×2 deneyi — adım 2: büyük modeller (Hücre 15, 23.11.2026)
+## 2×2 deneyi — adım 2: büyük modeller (Hücre 15, 23.11.2026)
 Büyük modeller: ResNet-101 (CNN), ViT-L/16 (ViT; batch 16 × gradient accumulation 2), CLIP ViT-H/14 + LR (ağırlıklar LAION-2B, OpenAI değil). Veri ve eğitim ayarları Hücre 14 ile aynı (düzeltilmiş 224 JPEG96, 3 epoch, 3 seed). Large toplam süre 79,6 dk.
 
 ### Mean (5 unseen) Accuracy (%), 3 seeds — tam 2×2

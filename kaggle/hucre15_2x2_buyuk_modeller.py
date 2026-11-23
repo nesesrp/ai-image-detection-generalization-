@@ -1,4 +1,4 @@
-# Hücre 15: Danışmanın 2×2 deneyi — 2. adım: düzeltilmiş veri, büyük modeller (4k ve 8k)
+# Hücre 15: 2×2 deneyi — 2. adım: düzeltilmiş veri, büyük modeller (4k ve 8k)
 #   (2) Düzeltilmiş veri, büyük model    (4) İki katı (düzeltilmiş) veri, büyük model
 # Hücre 14 aynı oturumda çalışmış olmalı (run_grid, summarize, GRID, TRAIN_FIX, TEST_FIX).
 # Her aile bir boy büyür: ResNet-50 → ResNet-101, ViT-B/16 → ViT-L/16, CLIP ViT-L/14 (OpenAI) → CLIP ViT-H/14 (LAION-2B).

@@ -1,4 +1,4 @@
-# Hücre 14: Danışmanın 2×2 deneyi — 1. adım: düzeltilmiş veri seti, aynı modeller (4k ve 8k)
+# Hücre 14: 2×2 deneyi — 1. adım: düzeltilmiş veri seti, aynı modeller (4k ve 8k)
 #   (1) Düzeltilmiş veri, aynı model    (3) İki katı (düzeltilmiş) veri, aynı model
 # Düzeltme (rapor Bölüm 3, ön işleme): tüm görseller aynı boyut ve aynı format —
 #   özgün çözünürlükte 224×224 merkezden kırpma (kısa kenarı 224'ten küçükse, yalnız BigGAN 128 px, önce bicubic ile 224'e büyütülür)
